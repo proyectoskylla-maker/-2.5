@@ -38,3 +38,4 @@ Desarrolla un software completo para análisis y pronósticos deportivos enfocad
 - Prueba con datos simulados de temporada 25/26 si no disponibles, pero diseña para datos reales.
 
 Proporciona el código fuente completo, instrucciones de instalación/ejecución, y una demo de uso. Asegura que sea ético y solo para fines analíticos.
+Incluye ahora el análisis de "ambos marcan" (both teams to score, BTTS) como una variable adicional, ya que si ambos equipos marcan, eso aumenta significativamente la probabilidad de que el partido supere los 2.5 goles (por ejemplo, escenarios como 1-1 ya contribuyen, pero con goles adicionales es más probable over). El software debe calcular probabilidades incorporando esta métrica en el modelo ML, ponderándola apropiadamente (e.g., 20% de peso si BTTS histórico es alto).
