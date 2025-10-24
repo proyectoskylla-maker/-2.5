@@ -1,0 +1,40 @@
+Desarrolla un software completo para análisis y pronósticos deportivos enfocado en el mercado de apuestas over/under 2.5 goles (específicamente +2.5 goles) en fútbol. El software debe ser una aplicación inteligente impulsada por IA, con integración de machine learning, que actúe como un experto en data science. Utiliza datos históricos y actuales de la temporada 2025/2026 para las siguientes ligas y equipos específicos:
+
+- **LaLiga España**: Real Madrid, Barcelona, Villarreal, Betis, Espanyol, Atlético Madrid, Sevilla, Elche, Athletic Bilbao, Alavés, Getafe, Osasuna, Levante, Rayo Vallecano, Valencia, Celta Vigo, Girona, Real Oviedo, Real Sociedad, Mallorca.
+- **Bundesliga Alemania**: Bayern Munich, Dortmund, RB Leipzig, Stuttgart, Bayer Leverkusen, FC Köln, Union Berlin, Eintracht Frankfurt, Freiburg, Hamburger SV, St. Pauli, Hoffenheim, Werder Bremen, Augsburg, Wolfsburg, Mainz, Heidenheim, Borussia Mönchengladbach.
+- **Premier League Inglaterra**: Arsenal, Liverpool, Tottenham, Bournemouth, Manchester City, Crystal Palace, Chelsea, Everton, Sunderland, Manchester United, Newcastle, Brighton, Aston Villa, Fulham, Leeds, Brentford, Nottingham Forest, Burnley, West Ham, Wolves.
+- **Serie A Italia**: Napoli, AS Roma, AC Milan, Inter, Juventus, Atalanta, Bologna, Como, Sassuolo, Cremonese, Cagliari, Udinese, Lazio, Parma, Lecce, Torino, Fiorentina, Verona, Genoa, Pisa.
+- **Champions League**: Bayern Munich, Real Madrid, PSG, Inter, Arsenal, Qarabag, Borussia Dortmund, Manchester City, Tottenham, Atlético de Madrid, Newcastle, Marsella, Club Brujas, Sporting CP, Eintracht Frankfurt, Barcelona, Liverpool, Chelsea, Nápoles, Royale Union SG, Galatasaray, Atalanta, Juventus, Bodo/Glimt, Bayer Leverkusen, Villarreal, PSV, Copenhague, Olympiacos, Mónaco, Slavia Praga, Pafos, Benfica, Athletic Club, Ajax, Kairat Almaty.
+
+**Requisitos del Algoritmo (Core Inteligente)**:
+- Basado en datos históricos (al menos 5 temporadas previas) y datos actuales de la temporada 2025/2026. Integra una base de datos interna (usa SQLite o similar para almacenar y actualizar datos automáticamente via APIs como de sitios de estadísticas deportivas si es posible en el entorno de desarrollo).
+- Calcula probabilidades de +2.5 goles para partidos seleccionados usando machine learning: Implementa un modelo de ML (por ejemplo, regresión logística, random forest o neural networks via bibliotecas como scikit-learn o TensorFlow) entrenado en variables estadísticas. El software debe convertirse en un "experto data scientist" al manejar preprocesamiento de datos, feature engineering, entrenamiento/validación de modelos y actualizaciones automáticas con nuevos datos.
+- Variables clave a incluir y ponderar (con pesos ajustables por importancia, e.g., goles 30%, forma reciente 25%, etc.):
+  - Promedio de goles por partido de cada equipo (total, local/visitante).
+  - Forma reciente: Últimos 5-10 partidos (análisis de goles, resultados).
+  - Factor local/visitante: Ajustes basados en rendimiento histórico en casa/fuera.
+  - Enfrentamientos históricos entre equipos (H2H: goles promedio en encuentros pasados).
+  - Goles a favor y en contra (por equipo y global).
+  - Porcentaje de posesión promedio.
+  - Tiros a puerta por partido (shots on target).
+  - Lesiones de jugadores clave (integra scraping o datos manuales para factores como ausencias de delanteros/goleadores).
+- Sistema de puntuación: Pondera variables por importancia (configurable). Establece un umbral mínimo de confianza (e.g., 60% para recomendar). Clasifica probabilidades en categorías: ALTA (>70%), MEDIA (50-70%), BAJA (<50%).
+- El usuario ingresa manualmente la cuota (odds) de cada evento; el software calcula el Expected Value (EV): EV = (Probabilidad * (Cuota - 1)) - (1 - Probabilidad). Muestra EV+ (positivo, rentable) o EV- (negativo, no rentable) con color coding (verde/rojo).
+
+**Interfaz del Software**:
+- Diseño general: Futurista e IA-like, con toques de interfaz de Python (e.g., elementos minimalistas como consolas de código estilizadas, gráficos en matplotlib/seaborn integrados, fondos oscuros con acentos neon/cyberpunk). Usa frameworks como Tkinter, PyQt o Streamlit para una UI limpia y profesional. Hazla responsive y moderna, con animaciones sutiles para cargas de datos.
+- Visualización de estadísticas y probabilidades: En formato "línea reverse" (implied odds reverse: muestra la probabilidad implícita de la cuota vs. la calculada por el modelo, con gráficos de líneas invertidas para comparaciones).
+- Elementos clave en la interfaz:
+  - Pantalla principal: Selector de liga/partido, input para cuota manual, botón para generar pronóstico.
+  - Mostrar razones del pronóstico: Explicación detallada (e.g., "Alta probabilidad debido a promedio de 3.2 goles en H2H y forma reciente con 4/5 over").
+  - Historial de aciertos: Sección con tasa de éxito pasada (trackea pronósticos vs. resultados reales, actualizable).
+  - Comparativa entre equipos: Gráficos side-by-side (barras/radar charts) para stats como goles, posesión, etc.
+  - Dashboard: Vista general con probabilidades categorizadas, alertas para EV+ altos.
+
+**Implementación Técnica**:
+- Desarrolla en Python para el backend (con ML via scikit-learn/TensorFlow). Integra base de datos para almacenar/actualizar stats (automatiza fetches si posible).
+- Haz el software standalone (ejecutable), con opciones para exportar reports en PDF/CSV.
+- Asegura que sea inteligente: El ML se reentrena periódicamente con nuevos datos; incluye validación cruzada para precisión.
+- Prueba con datos simulados de temporada 25/26 si no disponibles, pero diseña para datos reales.
+
+Proporciona el código fuente completo, instrucciones de instalación/ejecución, y una demo de uso. Asegura que sea ético y solo para fines analíticos.
